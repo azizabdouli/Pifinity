@@ -5,20 +5,18 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.io.Serializable;
 import java.util.Date;
 @Entity
 @Getter
 @Setter
-@ToString
-public class Reclamation {
+public class Reclamation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id ;
     private Date date;
-    @ToString.Exclude
     private String description;
-    @ManyToOne
-    private  User user;
+
 
 
 

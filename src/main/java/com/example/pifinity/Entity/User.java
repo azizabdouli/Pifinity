@@ -1,5 +1,6 @@
 package com.example.pifinity.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,12 +9,13 @@ import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Getter
 @Setter
-@ToString
+
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +26,12 @@ public class User implements Serializable {
     private String Password;
     private long numTel;
     private Date BirthDate;
-    @ToString.Exclude
     private String Nationality;
-    @OneToMany(mappedBy = "user")
-    private Set<Reclamation> reclamations;
+
+    @JsonIgnore
+
+    @OneToMany
+    private List<Reclamation> reclamations;
 
 
 }
